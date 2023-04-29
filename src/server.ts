@@ -1,11 +1,11 @@
-import "reflect-metadata";
-import "express-async-errors";
-import express, { Application } from "express";
-import { handleErros } from "./error";
+import app from "./app";
+import { AppDataSource } from "./data-source";
 
-const app: Application = express();
-app.use(express.json());
-
-app.use(handleErros);
-
-export default app;
+AppDataSource.initialize()
+  .then(() => {
+    console.log("Database is connected");
+    app.listen(3000, () => {
+      console.log("Server is running");
+    });
+  })
+  .catch((err) => console.log(err));
