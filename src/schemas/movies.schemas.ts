@@ -14,10 +14,17 @@ const movie = z.object({
   price: z.number(),
 });
 
+const movieData = z.object({
+  prevPage: z.string().nullable(),
+  nextPage: z.string().nullable(),
+  count: z.number(),
+  data: z.array(movieSchema),
+});
+
 const movieSchemaRequest = movieSchema.omit({
   id: true,
 });
 
 const movieUpdateSchema = movie.partial();
 
-export { movieSchema, movieSchemaRequest, movie, movieUpdateSchema };
+export { movieSchema, movieSchemaRequest, movie, movieUpdateSchema, movieData };

@@ -1,5 +1,9 @@
 import { Request, Response } from "express";
-import { TMovie, TMovieReturn } from "../interfaces/movies.interfaces";
+import {
+  TMovie,
+  TMovieData,
+  TMovieReturn,
+} from "../interfaces/movies.interfaces";
 import { createMovieService } from "../services/createMovie.service";
 import updateMovieService from "../services/updateMovie.service";
 import deleteMovieService from "../services/deleteMovie.service";
@@ -17,9 +21,14 @@ const createMoviesController = async (
 };
 
 const listMoviesController = async (req: Request, res: Response) => {
-  const { perPage, page } = req.query;
+  const { perPage, page, order, sort } = req.query;
 
-  const movies: Array<TMovieReturn> = await listMoviesService(perPage, page);
+  const movies: TMovieData = await listMoviesService(
+    perPage,
+    page,
+    order,
+    sort
+  );
 
   return res.status(200).json(movies);
 };

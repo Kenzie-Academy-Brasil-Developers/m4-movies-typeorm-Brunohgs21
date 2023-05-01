@@ -1,6 +1,7 @@
 import { z } from "zod";
 import {
   movie,
+  movieData,
   movieSchema,
   movieSchemaRequest,
 } from "../schemas/movies.schemas";
@@ -14,4 +15,6 @@ type TMovie = z.infer<typeof movie>;
 
 type TMovieUpdate = DeepPartial<TMovie>;
 
-export { TMovieRequest, TMovieReturn, TMovie, TMovieUpdate };
+type TMovieData = z.infer<typeof movieData>;
+
+export { TMovieRequest, TMovieReturn, TMovie, TMovieUpdate, TMovieData };
