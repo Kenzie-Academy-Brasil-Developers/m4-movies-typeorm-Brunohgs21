@@ -10,8 +10,10 @@ const movieSchema = z.object({
 const movie = z.object({
   name: z.string().max(50),
   description: z.string(),
-  duration: z.number(),
-  price: z.number(),
+  duration: z.number().refine((val) => val > 0, {
+    message: "Number must be greater than 0",
+  }),
+  price: z.number().int(),
 });
 
 const movieData = z.object({
