@@ -20,9 +20,6 @@ const updateMovieService = async (
   });
   await movieRepository.save(newMovie);
 
-  //   const updatedMovie = movieSchema.parse(Movie);
-  //   console.log(updatedMovie);
-
   return newMovie;
 };
 

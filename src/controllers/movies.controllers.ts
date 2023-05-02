@@ -38,8 +38,6 @@ const updateMovieController = async (req: Request, res: Response) => {
   const idMovie = parseInt(req.params.id);
 
   const updatedMovie = await updateMovieService(movieData, idMovie);
-  console.log(updatedMovie);
-
   return res.json(updatedMovie);
 };
 

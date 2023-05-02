@@ -19,14 +19,11 @@ const listMoviesService = async (
   let sortValue = sort || "id";
 
   if (take === -1 && !page) {
-    // take = undefined; // fetch all movies
-    // skip = undefined;
-
     const movieRepository: Repository<Movie> =
       AppDataSource.getRepository(Movie);
 
     const count: number = await movieRepository.count();
-    console.log(`Existem ${count} filmes no banco de dados`);
+    // console.log(`Existem ${count} filmes no banco de dados`);
 
     if (order === "desc" && !sort) {
       orderValue = "asc";
@@ -48,7 +45,7 @@ const listMoviesService = async (
 
     return movieData;
   } else if (take === 0 && !page) {
-    take = 1000; // get all movies in a single page
+    take = 1000;
   }
 
   if (skip < 1) {
@@ -58,7 +55,7 @@ const listMoviesService = async (
   const movieRepository: Repository<Movie> = AppDataSource.getRepository(Movie);
 
   const count: number = await movieRepository.count();
-  console.log(`Existem ${count} filmes no banco de dados`);
+  // console.log(`Existem ${count} filmes no banco de dados`);
 
   if (order === "desc" && !sort) {
     orderValue = "asc";
