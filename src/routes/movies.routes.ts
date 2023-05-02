@@ -12,6 +12,7 @@ import {
 } from "../controllers/movies.controllers";
 import ensureNameExistsMiddleware from "../middlewares/ensureNameExists.middleware";
 import ensureMovieExistsMiddleware from "./../middlewares/ensureMovieExists.middleware";
+import deleteNameMiddleware from "../middlewares/deleteName.middleware";
 
 const moviesRoutes: Router = Router();
 
@@ -29,6 +30,7 @@ moviesRoutes.patch(
   ensureDataIsValidMiddleware(movieUpdateSchema),
   ensureMovieExistsMiddleware,
   ensureNameExistsMiddleware,
+  deleteNameMiddleware,
   updateMovieController
 );
 
