@@ -4,15 +4,17 @@ const movieSchema = z.object({
   id: z.number(),
   name: z.string().max(50),
   description: z.string().optional(),
-  duration: z.number(),
-  price: z.number(),
+  duration: z.number().refine((val) => val > 0, {
+    message: "Number must be greater than 0",
+  }),
+  price: z.number().int(),
 });
 const movie = z.object({
-  name: z.string().max(50),
   description: z.string(),
   duration: z.number().refine((val) => val > 0, {
     message: "Number must be greater than 0",
   }),
+  name: z.string().max(50),
   price: z.number().int(),
 });
 
