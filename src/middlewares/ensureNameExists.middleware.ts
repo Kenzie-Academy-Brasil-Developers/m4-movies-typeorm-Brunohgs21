@@ -10,6 +10,9 @@ const ensureNameExistsMiddleware = async (
   next: NextFunction
 ): Promise<void> => {
   const { name } = req.body;
+  if (!name) {
+    return next();
+  }
   const MovieRepository: Repository<Movie> = AppDataSource.getRepository(Movie);
 
   const findMovie = await MovieRepository.findOne({
