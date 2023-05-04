@@ -4,10 +4,10 @@ import { Movie } from "../entities";
 import { TMovieData, TMovieReturn } from "../interfaces/movies.interfaces";
 
 const listMoviesService = async (
-  perPage: any,
-  page: any,
-  order: any,
-  sort: any
+  perPage: number,
+  page: number,
+  order: "asc" | "desc" | undefined,
+  sort: string | undefined
 ): Promise<TMovieData> => {
   let take: any = Number(perPage) || 5;
   if (take > 5) {

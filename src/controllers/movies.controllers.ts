@@ -24,10 +24,10 @@ const listMoviesController = async (req: Request, res: Response) => {
   const { perPage, page, order, sort } = req.query;
 
   const movies: TMovieData = await listMoviesService(
-    perPage,
-    page,
-    order,
-    sort
+    Number(perPage),
+    Number(page),
+    order as "asc" | "desc" | undefined,
+    sort as string | undefined
   );
 
   return res.status(200).json(movies);
